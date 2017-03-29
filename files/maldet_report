@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+data=$(date +"%y%m%d")
+last_session=$(cat /usr/local/maldetect/sess/session.last)
+#echo "$last_session"
+total_hits=$(cat /usr/local/maldetect/sess/session."$last_session" | grep 'TOTAL HITS' | awk '{print $3}')
+#echo "$total_hits"
+total_files=$(cat /usr/local/maldetect/sess/session."$last_session" | grep 'TOTAL FILES' | awk '{print $3}')
+#echo "$total_files"
+scan_data=$(echo "$last_session" | sed 's/-/ /g' | awk '{print $1;}')
+#echo "$scan_data"
+echo "$total_files" > /tmp/maldet_report
+echo "$total_hits" >> /tmp/maldet_report
+if [ "$scan_data" != "$data" ]
+        then echo 0 >> "/tmp/maldet_report"
+        else echo 1 >> "/tmp/maldet_report"
+fi
+echo "$last_session" >> /tmp/maldet_report
+echo "$scan_data" >> /tmp/maldet_report
