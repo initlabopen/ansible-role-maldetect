@@ -4,8 +4,8 @@
 - name: Download maldet
   get_url: url={{ maldet_download }} dest=/tmp/{{ maldet_download_file }}
 
-# - name: create directory
-#   file: path=/tmp/maldetect-install state=directory owner=root group=root mode=0755
+- name: create directory
+  file: path=/tmp/maldetect-install state=directory owner=root group=root mode=0755
 
 - name: Untar maldet
   unarchive: src=/tmp/{{ maldet_download_file }}  creates=/tmp/maldetect-install dest=/tmp/maldetect-install copy=no
