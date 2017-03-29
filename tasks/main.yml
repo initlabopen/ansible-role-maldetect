@@ -4,15 +4,12 @@
 - name: Download maldet
   get_url: url={{ maldet_download }} dest=/tmp/{{ maldet_download_file }}
 
-- name: create directory
-  file: path=/tmp/maldetect-install state=directory owner=root group=root mode=0755
-
 - name: Untar maldet
-  unarchive: src=/tmp/{{ maldet_download_file }}  dest=/tmp/maldetect-install copy=no
+  unarchive: src=/tmp/{{ maldet_download_file }}  dest=/tmp/ copy=no
   #shell: tar xvzf {{ maldet_download_file }} -C /tmp/maldetect-install chdir=/tmp
 
 - name: Run the maldet installer
-  shell: ./install.sh chdir=/tmp/maldetect-install
+  shell: ./install.sh chdir=/tmp/maldetect-1.6
 
 - name: Copy over conf.maldet
   template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
