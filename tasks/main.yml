@@ -25,4 +25,4 @@
   shell: rm -rf /tmp/maldetect* removes=/tmp/maldetect*
 
 - name: 'delete /etc/cron.daily/maldet'
-  file: src=/etc/cron.daily/maldet state=absent
+  file: path=/etc/cron.daily/maldet state=absent
