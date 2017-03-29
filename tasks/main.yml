@@ -8,7 +8,7 @@
   file: path=/tmp/maldetect-install state=directory owner=root group=root mode=0755
 
 - name: Untar maldet
-  unarchive: src=/tmp/{{ maldet_download_file }}  creates=/tmp/maldetect-install dest=/tmp/maldetect-install copy=no
+  unarchive: src=/tmp/{{ maldet_download_file }}  dest=/tmp/maldetect-install copy=no
   #shell: tar xvzf {{ maldet_download_file }} -C /tmp/maldetect-install chdir=/tmp
 
 - name: Run the maldet installer
