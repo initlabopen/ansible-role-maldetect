@@ -18,7 +18,7 @@ email_alert="1"
 # The destination e-mail addresses for automated/manual scan reports
 # and application version alerts.
 # [ multiple addresses comma (,) spaced ]
-email_addr="{{ maldet_mail_recipients|join(', ') }}"
+email_addr="{{ maldet_mail_recipients | join(', ') }}"
 
 # Ignore e-mail alerts for scan reports in which all malware hits
 # have been automatically and successfully cleaned.
