@@ -4,6 +4,9 @@
 - name: Download maldet
   get_url: url={{ maldet_download }} dest=/tmp/{{ maldet_download_file }}
 
+- name: Create root's download dir
+  file: path=/root/maldet state=directory
+
 - name: Untar maldet
   unarchive: src=/tmp/{{ maldet_download_file }} creates=/tmp/maldet  dest=/tmp/maldet copy=no
   #shell: tar xvzf {{ maldet_download_file }} -C /tmp/maldetect-install chdir=/tmp
