@@ -16,19 +16,19 @@
 
 # - name: Run the maldet installer
 #   shell: ./install.sh
-#
-# - name: Copy over conf.maldet
-#   template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
-#   tags: conf.maldet
-#
-# - name: copy cron daily
-#   action: copy src=../files/maldet_scan dest=/etc/cron.daily/ owner=root group=root mode="755"
-#
-# - name: copy cron hourly
-#   action: copy src=../files/maldet_report dest=/etc/cron.hourly/ owner=root group=root mode="755"
-#
-# - name: Make sure no old maldet folders are lurking here
-#   shell: rm -rf /tmp/maldetect* removes=/tmp/maldetect*
-#
-# - name: 'delete /etc/cron.daily/maldet'
-#   file: path=/etc/cron.daily/maldet state=absent
+
+- name: Copy over conf.maldet
+  template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
+  tags: conf.maldet
+
+- name: copy cron daily
+  action: copy src=../files/maldet_scan dest=/etc/cron.daily/ owner=root group=root mode="755"
+
+- name: copy cron hourly
+  action: copy src=../files/maldet_report dest=/etc/cron.hourly/ owner=root group=root mode="755"
+
+- name: Make sure no old maldet folders are lurking here
+  shell: rm -rf /tmp/maldetect* removes=/tmp/maldetect*
+
+- name: 'delete /etc/cron.daily/maldet'
+  file: path=/etc/cron.daily/maldet state=absent
