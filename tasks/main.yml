@@ -8,7 +8,7 @@
   file: path=/tmp/maldet state=directory
 
 - name: Untar maldet
-  unarchive: src=/tmp/{{ maldet_download_file }} creates=/tmp/maldet  dest=/tmp/maldet copy=no
+  unarchive: src=/tmp/{{ maldet_download_file }} dest=/tmp/maldet copy=no
   #shell: tar xvzf {{ maldet_download_file }} -C /tmp/maldetect-install chdir=/tmp
 
 # - name: Run the maldet installer
