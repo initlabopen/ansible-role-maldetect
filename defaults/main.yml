@@ -1,2 +1,3 @@
 maldet_download: 'http://www.rfxn.com/downloads/maldetect-current.tar.gz'
 maldet_download_file: 'maldetect-current.tar.gz'
+maldet_mail_recipients: []
