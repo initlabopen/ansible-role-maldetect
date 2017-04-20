@@ -19,7 +19,6 @@
 
 - name: Copy over conf.maldet
   template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
-  tags: conf.maldet
 
 - name: copy cron daily
   action: copy src=../files/maldet_scan dest=/etc/cron.daily/ owner=root group=root mode="755"
