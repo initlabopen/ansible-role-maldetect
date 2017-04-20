@@ -5,24 +5,24 @@
   get_url: url={{ maldet_download }} dest=/tmp/{{ maldet_download_file }}
 
 - name: Untar maldet
-  unarchive: src=/tmp/{{ maldet_download_file }}  dest=/tmp/ copy=no
+  unarchive: src=/tmp/{{ maldet_download_file }} creates=/tmp/maldet  dest=/tmp/maldet copy=no
   #shell: tar xvzf {{ maldet_download_file }} -C /tmp/maldetect-install chdir=/tmp
 
-- name: Run the maldet installer
-  shell: ./install.sh chdir=/tmp/maldetect-1.6
-
-- name: Copy over conf.maldet
-  template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
-  tags: conf.maldet
-
-- name: copy cron daily
-  action: copy src=../files/maldet_scan dest=/etc/cron.daily/ owner=root group=root mode="755"
-
-- name: copy cron hourly
-  action: copy src=../files/maldet_report dest=/etc/cron.hourly/ owner=root group=root mode="755"
-
-- name: Make sure no old maldet folders are lurking here
-  shell: rm -rf /tmp/maldetect* removes=/tmp/maldetect*
-
-- name: 'delete /etc/cron.daily/maldet'
-  file: path=/etc/cron.daily/maldet state=absent
+# - name: Run the maldet installer
+#   shell: /tmp/maldet/install.sh chdir=/tmp/maldet
+#
+# - name: Copy over conf.maldet
+#   template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
+#   tags: conf.maldet
+#
+# - name: copy cron daily
+#   action: copy src=../files/maldet_scan dest=/etc/cron.daily/ owner=root group=root mode="755"
+#
+# - name: copy cron hourly
+#   action: copy src=../files/maldet_report dest=/etc/cron.hourly/ owner=root group=root mode="755"
+#
+# - name: Make sure no old maldet folders are lurking here
+#   shell: rm -rf /tmp/maldetect* removes=/tmp/maldetect*
+#
+# - name: 'delete /etc/cron.daily/maldet'
+#   file: path=/etc/cron.daily/maldet state=absent
