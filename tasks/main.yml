@@ -29,5 +29,8 @@
 - name: Make sure no old maldet folders are lurking here
   shell: rm -rf /tmp/maldet removes=/tmp/maldet
 
+- name: Make sure no old maldet folders are lurking here
+  shell: rm -rf /tmp/maldetect* removes=/tmp/maldetect* 
+
 - name: 'delete /etc/cron.daily/maldet'
   file: path=/etc/cron.daily/maldet state=absent
