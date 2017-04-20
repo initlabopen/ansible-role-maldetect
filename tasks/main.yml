@@ -11,8 +11,8 @@
   unarchive: src=/tmp/{{ maldet_download_file }} dest=/tmp/maldet copy=no
   #shell: tar xvzf {{ maldet_download_file }} -C /tmp/maldetect-install chdir=/tmp
 
- - name: Run the maldet installer
-   shell: ./install.sh chdir=/tmp/maldet/maldetect-*
+- name: Run the maldet installer
+  shell: ./install.sh chdir=/tmp/maldet/maldetect-*
 #
 # - name: Copy over conf.maldet
 #   template: src=conf.maldet.j2 dest=/usr/local/maldetect/conf.maldet owner=root group=root mode=0644
